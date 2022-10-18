@@ -15,6 +15,7 @@ int main(void)
         }
     }
     
+    
     for(int i = 0; i < m; i++) {
         scanf("%d", &k);
         for(int j = 0; j < k; j++) {
