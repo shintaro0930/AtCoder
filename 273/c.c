@@ -27,13 +27,14 @@ int main(void)
     int n;
     scanf("%d", &n);
     long int a[n];
+    long int tmp[n];
 
     for (int i = 0; i < n; i++)
     {
         scanf("%ld", &a[i]);
     }
 
-//    qsort(a, sizeof(a) / sizeof(a[0]), sizeof(long int), compare);
+    //    qsort(a, sizeof(a) / sizeof(a[0]), sizeof(long int), compare);
 
     // debug
     // printf("---after qsort---\n");
@@ -43,12 +44,38 @@ int main(void)
     // }
 
     int cnt;
-    for(int i = 0; i < n; i++) {
+    int flag;
+    for (int i = 0; i < n; i++)
+    {
+        for (int s = 0; s < n; s++)
+        {
+            tmp[s] = 0;
+        }
         cnt = 0;
-        for(int j = i + 1; j < n; j++) {
-            if(a[i] < a[j]) {
-                //write me
-                ++cnt;
+        for (int j = i + 1; j < n; j++)
+        {
+            flag = 0;
+            if (a[i] == a[j])
+            {
+                continue;
+            }
+            // printf("%ld: %ld\n", a[i], a[j]);
+            if (a[i] < a[j])
+            {
+                for (int s = 0; s < cnt; s++)
+                {
+                    if (tmp[s] == a[j])
+                    {
+                        // printf("%ld: %ld\n", tmp[s], a[j]);
+                        flag = 1;
+                    }
+                }
+                if (flag == 0)
+                {
+                    printf("%ld: %ld\n", a[i], a[j]);
+                    tmp[cnt] = a[j];
+                    ++cnt;
+                }
             }
         }
         printf("%d\n", cnt);
