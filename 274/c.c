@@ -1,28 +1,22 @@
 #include <stdio.h>
 
-int main (void)
+int main(void)
 {
-  int n, a;
-  int ameba[40010];
+  int ameba[400010];
+  int n, num, i, count, val;
 
   scanf("%d", &n);
-
-  ameba[0] = 0;
-  for (int i = 0; i < n; i++)
+  for (i = 1; i <= n; i++)
   {
-    scanf("%d", &a);
-
-    ameba[2 * i] = ameba[a] + 1;
-    ameba[2 * i + 1] = ameba[a] + 1;
+    scanf("%d", &num);
+    ameba[2 * i] = ameba[num] + 1;
+    ameba[2 * i + 1] = ameba[num]+ 1;
   }
 
-  for (int i = 0; i < 2 * n + 1; i++)
+  printf("0\n");
+  for (i = 2; i <= 2 * n + 1; i += 2)
   {
-    printf("%d\n", ameba[i]);
+    printf("%d\n%d\n", ameba[i], ameba[i + 1]);
   }
-
   return 0;
-
 }
-
-
